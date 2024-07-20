@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank System</title>
+    <link rel="stylesheet" href="bank.css">
+</head>
+<body>
+    <header>
+        <h1>FAKE BANK</h1>
+        <button id="dark-mode-toggle" onclick="toggleDarkMode()">🌞</button>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#">Home</a>
+            <a href="#transaction">Transaction</a>
+            <a href="#services">Services</a>
+            <a href="#history">History</a>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="account">
+            <h2>Account Balance</h2>
+            <p id="balance">₱0.00</p>
+        </div>
+        <div class="transaction" id="transaction">
+            <h2>Transaction</h2>
+            <input type="number" id="amount" placeholder="Enter amount">
+            <select id="transaction-type">
+                <option value="deposit">Deposit</option>
+                <option value="withdraw">Withdraw</option>
+            </select>
+            <div class="payment-methods">
+                <button class="debit-button" id="debit-card-btn" onclick="showDebitCardFields()">Debit Card</button>
+                <button class="visa-button" id="visa-card-btn" onclick="showVisaCardFields()">VISA Card</button>
+            </div>
+            <div id="debit-card-fields" class="hidden">
+                <input type="text" id="debit-card-number" placeholder="Debit Card Number">
+                <input type="text" id="debit-card-expiry" placeholder="Expiry Date (MM/YY)">
+                <input type="text" id="debit-card-cvc" placeholder="CVC">
+            </div>
+            <div id="visa-card-fields" class="hidden">
+                <input type="text" id="visa-card-number" placeholder="VISA Card Number">
+                <input type="text" id="visa-card-expiry" placeholder="Expiry Date (MM/YY)">
+                <input type="text" id="visa-card-cvc" placeholder="CVC">
+            </div>
+            <button onclick="performTransaction()">Submit</button>
+        </div>
+        <div id="notification" class="hidden"></div>
+        <div class="services" id="services">
+            <h2>Our Services</h2>
+            <div class="service-container">
+                <div class="service">
+                    <img src="https://www.downloadclipart.net/large/savings-png-background-image.png" alt="Savings">
+                    <h3>Savings</h3>
+                    
+                    <button onclick="manageSavings()">Manage Savings</button>
+                </div>
+                <div class="service">
+                    <img src="https://static.vecteezy.com/system/resources/previews/021/596/661/original/3d-illustration-house-loan-in-credit-and-loan-set-free-png.png" alt="Loan">
+                    <h3>Loan</h3>
+                
+                    <button onclick="applyForLoan()">Apply for Loan</button>
+                </div>
+                <div class="service">
+                    <img src="https://clipart.info/images/ccovers/1505918647iphone-x-png.png" alt="Load">
+                    <h3>Load</h3>
+                    
+                    <button onclick="payBills()">Pay Bills</button>
+                </div>
+                <div class="service">
+                    <img src="https://freepngimg.com/thumb/bitcoin/65148-cryptocurrency-logo-tether-ethereum-bitcoin-free-photo-png.png" alt="Crypto">
+                    <h3>Crypto</h3>
+                    
+                    <button onclick="manageCrypto()">Manage Crypto</button>
+                </div>
+            </div>
+        </div>
+        <div class="history" id="history">
+            <h2>Transaction History</h2>
+            <ul id="transaction-history"></ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 FAKE BANK. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="https://www.facebook.com/"> Created by</a></p> 
+    </footer>
+    
+    <div id="receipt" class="hidden">
+        <h2>Receipt</h2>
+        <p id="receipt-message"></p>
+        <button onclick="closeReceipt()">Close</button>
+        <button onclick="downloadReceipt()">Download Receipt</button>
+    </div>
+    
+    <script src="bank.js"></script>
+</body>
+</html>
